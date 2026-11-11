@@ -54,7 +54,7 @@ class ArticleController extends Controller
     {
         $this->authorize('view', $article);
 
-        $article->load('comments.user');
+        $article->load(['approvedComments.user']);
 
         return view('articles.show', compact('article'));
     }

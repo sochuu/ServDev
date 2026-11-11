@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['article_id', 'user_id', 'body'])]
+#[Fillable(['article_id', 'user_id', 'body', 'approved'])]
 class Comment extends Model
 {
+    protected function casts(): array
+    {
+        return [
+            'approved' => 'boolean',
+        ];
+    }
+
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);

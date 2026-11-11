@@ -166,6 +166,9 @@
                 @can('create', App\Models\Article::class)
                     <a href="{{ route('articles.create') }}" class="{{ request()->routeIs('articles.create') ? 'active' : '' }}">Создать новость</a>
                 @endcan
+                @can('moderate', App\Models\Comment::class)
+                    <a href="{{ route('comments.moderate') }}" class="{{ request()->routeIs('comments.moderate') ? 'active' : '' }}">Модерация</a>
+                @endcan
                 <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">О нас</a>
                 <a href="{{ route('contacts') }}" class="{{ request()->routeIs('contacts') ? 'active' : '' }}">Контакты</a>
                 @auth

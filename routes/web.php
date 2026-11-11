@@ -30,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
     Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::get('/comments/moderate', [CommentController::class, 'moderate'])->name('comments.moderate');
+    Route::patch('/comments/{comment}/accept', [CommentController::class, 'accept'])->name('comments.accept');
+    Route::delete('/comments/{comment}/reject', [CommentController::class, 'reject'])->name('comments.reject');
 });
 
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');

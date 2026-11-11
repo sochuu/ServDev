@@ -25,4 +25,9 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class)->latest();
     }
+
+    public function approvedComments(): HasMany
+    {
+        return $this->comments()->where('approved', true);
+    }
 }

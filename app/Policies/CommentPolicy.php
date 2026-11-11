@@ -8,6 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
 {
+    public function moderate(?User $user): Response
+    {
+        return $user?->isModerator()
+            ? Response::allow()
+            : Response::deny('Модерация комментариев доступна только модератору.');
+    }
+
     public function create(User $user): Response
     {
         return ($user->isReader() || $user->isModerator())

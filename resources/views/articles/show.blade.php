@@ -22,7 +22,7 @@
     <p>{{ $article->desc }}</p>
 
     <h2>Комментарии</h2>
-    @forelse ($article->comments as $comment)
+    @forelse ($article->approvedComments as $comment)
         <div class="comment">
             <strong>{{ $comment->user?->name ?? 'Гость' }}</strong>
             <time>{{ $comment->created_at->format('d.m.Y H:i') }}</time>
